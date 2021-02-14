@@ -18,26 +18,8 @@ def share_class(departments, instructors):
     # Sort departments by number of students in ascending order.
     s = sorted(departments, key=op.itemgetter(1))
 
-    
-    while True:
-        for instructor in instructors:
-            for key in instructor:
-                d = instructor[key]
-                try:
-                    v = s[index]
-                except IndexError:
-                    return instructors
-                d[v[0]] = v[1]
-            
-            
-            index += 1
-            count += 1
-        s = s[index:]
-        s = s[::-1]
-        index = 0
 
-
-    return instructors
+    return s
 
 
 def get_departments(file):
@@ -133,7 +115,8 @@ def main():
     instructors = get_instructors(instructors)
     departments = get_departments(departments)
 
-    disp(share_class(departments, instructors))
+    # disp(share_class(departments, instructors))
+    share_class(departments, instructors)
 
 
 if __name__ == '__main__':
