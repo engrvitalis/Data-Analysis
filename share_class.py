@@ -9,38 +9,41 @@ def share_class(departments, instructors):
     @return: list
     """
 
+    import operator as op
+
     # Initialize variable
     ls = list()
 
-    
+    print(departments)
+    print(instructors)
+
+    s = sorted(departments, key=op.itemgetter(1))
+    return s
 
 
 def get_departments(file):
     """
     This function will read file and extract the names of 
     departments, the number of students in each department
-    and return it as a list of dicts with names as keys and 
-    the number of students as values.
+    and return it as a list of tuples containing the name 
+    and students count.
 
     eg:
         get_departments('departments.txt')
-        --> returns [{'a': 45}, {'b': 87}, {'c': 23}]
+        --> returns [('a': 45), ('b': 87), ('c': 23)]
 
     @param: str - file
-    @return: list of dicts.
+    @return: list of tuples.
     """
 
     # Initialize variables
     ls = list()
-    d = dict()
 
     # Open file, read line by line
     with open(file, 'r') as f:
         for line in f:
             line = line.split() # Split line by space.
-            d[line[0]] = line[1]    # Add first element to d as key and second element as value
-            ls.append(d)    # Add d into ls.
-            d = dict()  #Re-initialize d for next round.
+            ls.append((line[0], int(line[1])))    # Add tuple of first and second item into ls.
 
     return ls
 
@@ -96,9 +99,10 @@ def main():
     departments = 'classes.txt'
     instructors = 'instructors.txt'
 
-    share_class(departments, instructors)
-    print(get_instructors(instructors))
-    print(get_departments(departments))
+    instructors = get_instructors(instructors)
+    departments = get_departments(departments)
+
+    print(share_class(departments, instructors))
 
 
 if __name__ == '__main__':
