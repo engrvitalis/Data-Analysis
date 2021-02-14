@@ -9,6 +9,11 @@ def share_class(departments, instructors):
     @return: list
     """
 
+    # Initialize variable
+    ls = list()
+
+    
+
 
 def get_departments(file):
     """
