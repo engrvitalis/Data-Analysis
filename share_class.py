@@ -12,13 +12,24 @@ def share_class(departments, instructors):
     import operator as op
 
     # Initialize variable
-    ls = list()
-
-    print(departments)
-    print(instructors)
+    index = 0
+    count = 0
 
     s = sorted(departments, key=op.itemgetter(1))
-    return s
+    while count < len(departments):
+        for instructor in instructors:
+            for key in instructor:
+                d = instructor[key]
+                v = s[index]
+                d[v[0]] = v[1]
+            
+            index += 1
+            count += 1
+        s = s[index:]
+        s = s[::-1]
+        index = 0
+
+    return instructors
 
 
 def get_departments(file):
@@ -69,7 +80,7 @@ def get_instructors(names):
     # Assign names as keys and [] as values in dic and append 
     # dic to ls.
     for name in randomize_names(names):
-        dic[name] = None
+        dic[name] = {}
         ls.append(dic)
         dic = dict() # Re-initialize dic.
 
@@ -95,6 +106,17 @@ def randomize_names(file):
     return s
 
 
+def disp(ls):
+    for schedule in ls:
+        for instructor, departments in schedule.items():
+            print(f'Instructor: {instructor}')
+            print('*'*50)
+            print('Departments\tNumber of Students')
+            for department, count in departments.items():
+                print(f'{department}\t\t{count}')
+            print()
+
+
 def main():
     departments = 'classes.txt'
     instructors = 'instructors.txt'
@@ -102,7 +124,7 @@ def main():
     instructors = get_instructors(instructors)
     departments = get_departments(departments)
 
-    print(share_class(departments, instructors))
+    disp(share_class(departments, instructors))
 
 
 if __name__ == '__main__':
