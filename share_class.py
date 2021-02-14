@@ -112,6 +112,7 @@ def disp(ls):
             print(f'Instructor: {instructor}')
             print('*'*50)
             print('Departments\tNumber of Students')
+            print('*'*50)
             for department, count in departments.items():
                 print(f'{department}\t\t{count}')
             print()
