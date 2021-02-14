@@ -1,5 +1,13 @@
-def share_class(classes, instructors):
-    pass
+def share_class(departments, instructors):
+    """
+    This function takes 2 arguments, departments and instructors which are
+    both list of dictionaries. It then allocate departments to instructors
+    based on the number students in it while keeping to minimum the difference 
+    in the total number of students allocated to each instructor.
+
+    @param: list - departments, instructors
+    @return: list
+    """
 
 
 def get_departments(file):
@@ -53,7 +61,7 @@ def get_instructors(names):
     # Assign names as keys and [] as values in dic and append 
     # dic to ls.
     for name in randomize_names(names):
-        dic[name] = []
+        dic[name] = None
         ls.append(dic)
         dic = dict() # Re-initialize dic.
 
@@ -85,7 +93,6 @@ def main():
 
     share_class(departments, instructors)
     print(get_instructors(instructors))
-    print(randomize_names(instructors))
     print(get_departments(departments))
 
 
