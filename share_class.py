@@ -16,7 +16,7 @@ def share_class(departments, instructors):
     count = 0
 
     # Sort departments by number of students in ascending order.
-    s = sorted(departments, key=op.itemgetter(1))
+    s = sorted(departments, key=op.itemgetter(1), reverse=True)
 
     
     while True:
