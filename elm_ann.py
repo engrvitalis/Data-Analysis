@@ -8,8 +8,20 @@ def get_file(files):
     
     return df
 
+def disp_subplot(df, ncols, ntarget, pos, i):
+    for j in range(0, ncols):
+        # Specify plot location in subplot.
+        plt.subplot(1, ncols*ntarget, pos)
+        # Plot predictor vs target.
+        plt.scatter(df.iloc[:, j], df.iloc[:, -i])
+        # Label the axis.
+        plt.ylabel(df.columns[-i])
+        plt.xlabel(df.columns[j])
 
-def explore(df, ntarget):
+        pos += 1
+    return pos
+
+def explore(df, ntarget=1):
     '''
     Plot the predictor variables against the target variables.
     It is assumed that the target variables is/are the last column(s).
@@ -18,16 +30,25 @@ def explore(df, ntarget):
     Output: Subplots of each predictor variable against each target variable.
     Return: None
     '''
+    # Initialize variables.
     pos = 1
-    ncols = len(df.columns)-1
+    ncols = len(df.columns)-ntarget
 
-    plt.figure(figsize=[15, 5])
-    for i in range(0, ncols):
-        plt.subplot(1, ncols, pos)
-        plt.scatter(df.iloc[:, i], df.iloc[:, -1])
-        plt.ylabel(df.columns[-1])
-        plt.xlabel(df.columns[i])
-        pos += 1
+    # Check if number of target variables is greater than 1.
+    if ntarget < 2:
+        i = ntarget
+        # Set figure size for subplot.
+        plt.figure(figsize=[10, 5])
+
+        # Plot predictor vs target variables on a subplot for each file.
+        for j in range(0, ncols):
+            disp_subplot(df, ncols, ntarget, pos, i)
+    else:
+        # Set figure size for subplot.
+        plt.figure(figsize=[15, 5])
+        # Plot predictor vs target variables on a subplot for each file.
+        for i in range(ntarget, 0, -1):
+            pos = disp_subplot(df, ncols, ntarget, pos, i)
     plt.tight_layout()
     plt.show()
     print('\n')
