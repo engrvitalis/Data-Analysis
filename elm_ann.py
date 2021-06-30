@@ -90,6 +90,9 @@ def scale_data(X_train, X_test):
     return X_trainscaled, X_testscaled
 
 def ann_analysis(X_train, y_train, X_test, y_test):
+    '''
+    Train, test and predict using ANN.
+    '''
     X_trainscaled, X_testscaled = scale_data(X_train, X_test)
     reg = MLPRegressor(hidden_layer_sizes=(64, 64, 64), activation='relu', random_state=1, max_iter=5000).fit(X_trainscaled, y_train)
 
