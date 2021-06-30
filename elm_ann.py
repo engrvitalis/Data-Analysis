@@ -35,6 +35,7 @@ def disp_subplot(df, ncols, ntarget, pos, i):
         plt.xlabel(df.columns[j])
 
         pos += 1
+    plt.suptitle('Predictor(s) vs Target(s)')
     return pos
 
 def explore(df, ntarget=1):
@@ -70,6 +71,9 @@ def explore(df, ntarget=1):
     print('\n')
 
 def generate_train_test(df, ntarget=1):
+    '''
+    Divide test data into test and training.
+    '''
     X = df.iloc[:, :ntarget]
     y = df.iloc[:, ntarget]
 
@@ -82,7 +86,7 @@ def scale_data(X_train, X_test):
 
     return X_trainscaled, X_testscaled
 
-def ann_analysis():
+def ann_analysis(X_train, y_train, X_test, y_test):
     X_trainscaled, X_testscaled = scale_data(X_train, X_test)
     reg = MLPRegressor(hidden_layer_sizes=(64, 64, 64), activation='relu', random_state=1, max_iter=5000).fit(X_trainscaled, y_train)
 
@@ -93,7 +97,7 @@ def ann_analysis():
 
     return r2, rmse, mae, y_pred, reg
 
-def elm_analysis(hidden_size=5000):
+def elm_analysis(X_train, y_train, X_test, y_test, hidden_size=5000):
     input_size = X_train.shape[1]
     hidden_size = hidden_size
     input_weights = np.random.normal(size=[input_size,hidden_size])
@@ -122,7 +126,7 @@ def elm_analysis(hidden_size=5000):
 
     return r2, rmse, mae, y_pred
 
-def disp_matrics(r2, rmse, mae, title):
+def disp_matrics(r2, rmse, mae, start, stop, title):
     print(title)
     print('===============================================')
     print(f'R^2:\t\t{r2}')
@@ -152,7 +156,7 @@ def disp_graphs(i, y_test, y_ann_pred, y_elm_pred):
     plt.tight_layout()
     plt.show()
 
-def disp_compare_graphs():
+def disp_compare_graphs(ann_r2, ann_rmse, ann_mae, ann_time, elm_r2, elm_rmse, elm_mae, elm_time):
     plt.figure(figsize = (10, 5))
 
     x = np.arange(4)
