@@ -80,6 +80,9 @@ def generate_train_test(df, ntarget=1):
     return train_test_split(X, y,random_state=1, test_size=0.2)
 
 def scale_data(X_train, X_test):
+    '''
+    Scale data for better prediction.
+    '''
     sc_X = StandardScaler()
     X_trainscaled=sc_X.fit_transform(X_train)
     X_testscaled=sc_X.transform(X_test)
