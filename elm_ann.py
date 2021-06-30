@@ -172,6 +172,9 @@ def disp_graphs(i, y_test, y_ann_pred, y_elm_pred):
     plt.show()
 
 def disp_compare_graphs(ann_r2, ann_rmse, ann_mae, ann_time, elm_r2, elm_rmse, elm_mae, elm_time):
+    '''
+    Display comparison graphs.
+    '''
     plt.figure(figsize = (10, 5))
 
     x = np.arange(4)
