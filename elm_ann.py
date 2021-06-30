@@ -96,7 +96,7 @@ def ann_analysis(X_train, y_train, X_test, y_test):
     X_trainscaled, X_testscaled = scale_data(X_train, X_test)
     reg = MLPRegressor(hidden_layer_sizes=(64, 64, 64), activation='relu', random_state=1, max_iter=5000).fit(X_trainscaled, y_train)
 
-    y_pred=reg.predict(X_testscaled)
+    y_pred = reg.predict(X_testscaled)
     r2 = r2_score(y_pred, y_test)
     rmse = np.sqrt(mean_squared_error(y_test, y_pred))
     mae = mean_absolute_error(y_test, y_pred)
@@ -104,6 +104,9 @@ def ann_analysis(X_train, y_train, X_test, y_test):
     return r2, rmse, mae, y_pred, reg
 
 def elm_analysis(X_train, y_train, X_test, y_test, hidden_size=5000):
+    '''
+    Train, test and predict using ELM.
+    '''
     input_size = X_train.shape[1]
     hidden_size = hidden_size
     input_weights = np.random.normal(size=[input_size,hidden_size])
