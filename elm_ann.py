@@ -136,6 +136,9 @@ def elm_analysis(X_train, y_train, X_test, y_test, hidden_size=5000):
     return r2, rmse, mae, y_pred
 
 def disp_matrics(r2, rmse, mae, start, stop, title):
+    '''
+    Display important metrics for data.
+    '''
     print(title)
     print('===============================================')
     print(f'R^2:\t\t{r2}')
