@@ -148,6 +148,9 @@ def disp_matrics(r2, rmse, mae, start, stop, title):
     print('\n')
 
 def disp_graphs(i, y_test, y_ann_pred, y_elm_pred):
+    '''
+    Display graphs.
+    '''
     plt.figure(figsize=(10, 5))
 
     plt.subplot(1, 2, 1)
