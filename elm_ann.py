@@ -9,6 +9,15 @@ def get_file(files):
     return df
 
 def disp_subplot(df, ncols, ntarget, pos, i):
+    '''
+    Displays the subplot of single or multiple predictor and target variables.
+
+    Input: Dataframe (df), number of predictor variable columns (ncols), number of target variable(s) columns, (ntarget),
+           plot position in a subplot (pos) and target variable column number (i).
+
+    Output: A subplot containing all the predictor variable(s) against the target variable(s).
+    Return: None.
+    '''
     for j in range(0, ncols):
         # Specify plot location in subplot.
         plt.subplot(1, ncols*ntarget, pos)
