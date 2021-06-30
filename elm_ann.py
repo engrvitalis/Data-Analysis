@@ -61,3 +61,12 @@ def explore(df, ntarget=1):
     plt.tight_layout()
     plt.show()
     print('\n')
+
+    def stats():
+        for j in range(2):
+            print('\nData Statistical Summary')
+            display(df[x].describe())
+            print('')
+
+            print('\nData Visualization')
+            explore(df[x], 4)
