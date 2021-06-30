@@ -1,3 +1,4 @@
+from numpy.core.fromnumeric import shape
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
@@ -74,8 +75,8 @@ def generate_train_test(df, ntarget=1):
     '''
     Divide test data into test and training.
     '''
-    X = df.iloc[:, :ntarget]
-    y = df.iloc[:, ntarget]
+    X = df.iloc[:, :-ntarget]
+    y = df.iloc[:, -ntarget:]
 
     return train_test_split(X, y,random_state=1, test_size=0.2)
 
