@@ -2,6 +2,7 @@ import numpy as np
 import seaborn as sns
 import pandas as pd
 import matplotlib.pyplot as plt
+import random
 from IPython.display import display
 
 def get_prob(factors):
