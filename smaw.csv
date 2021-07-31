@@ -1,5 +1,4 @@
 ﻿current,voltage,welding_speed,plate_thickness,welding_type,heat_input,tensile_strength,flexural_strength,hardness_value,residual_stress
-,,,,,,,,,
 130,32,90,8,SMAW,2218,332.8,270.2,96.4,270.2
 100,28,120,8,SMAW,1120,302.8,214.6,134.5,176.8
 130,28,150,6,SMAW,1165,300.6,220.1,130.3,180.2
